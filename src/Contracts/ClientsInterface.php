@@ -8,12 +8,6 @@ namespace Iyuu\BittorrentClient\Contracts;
 interface ClientsInterface
 {
     /**
-     * 构造函数
-     * @param array $config 配置
-     */
-    public function __construct(array $config = []);
-
-    /**
      * 登陆
      */
     public function login();
