@@ -48,8 +48,7 @@ class Install
             }
             //symlink(__DIR__ . "/$source", base_path()."/$dest");
             copy_dir(__DIR__ . "/$source", base_path()."/$dest", true);
-            echo "Create $dest
-";
+            echo "Create $dest" . PHP_EOL;
         }
     }
 
@@ -64,8 +63,7 @@ class Install
             if (!is_dir($path) && !is_file($path)) {
                 continue;
             }
-            echo "Remove $dest
-";
+            echo "Remove $dest" . PHP_EOL;
             if (is_file($path) || is_link($path)) {
                 unlink($path);
                 continue;

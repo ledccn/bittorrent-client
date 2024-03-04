@@ -4,6 +4,8 @@ namespace Iyuu\BittorrentClient;
 
 use Iyuu\BittorrentClient\Clients\Clients;
 use Iyuu\BittorrentClient\Clients\Config;
+use Iyuu\BittorrentClient\Clients\qBittorrent\Client as qBittorrent;
+use Iyuu\BittorrentClient\Clients\transmission\Client as transmission;
 use Iyuu\BittorrentClient\Exception\NotFoundException;
 
 /**
@@ -20,9 +22,9 @@ class Factory
      * @var string[]
      */
     private static array $provider = [
-        'qBittorrent' => \Iyuu\BittorrentClient\Clients\qBittorrent\Client::class,
-        'transmission' => \Iyuu\BittorrentClient\Clients\transmission\Client::class,
-    ];//PROVIDER_END不要删除这里
+        'qBittorrent' => qBittorrent::class,
+        'transmission' => transmission::class,
+    ];
 
     /**
      * @param Config $config
@@ -86,23 +88,5 @@ class Factory
     final public static function allProvider(): array
     {
         return self::$provider;
-    }
-
-    /**
-     * 获取当前文件路径
-     * @return string
-     */
-    final public static function getFilepath(): string
-    {
-        return __FILE__;
-    }
-
-    /**
-     * 获取当前目录名
-     * @return string
-     */
-    final public static function getDirname(): string
-    {
-        return __DIR__;
     }
 }

@@ -11,6 +11,11 @@ use Ledc\Curl\Curl;
 abstract class Clients implements ClientsInterface
 {
     /**
+     * 下载器类型
+     * @var string
+     */
+    public readonly string $type;
+    /**
      * 配置
      * @var Config
      */
@@ -27,6 +32,7 @@ abstract class Clients implements ClientsInterface
     final public function __construct(Config $config)
     {
         $this->config = $config;
+        $this->type = $config->type;
         $this->initCurl();
         $this->initialize();
     }
@@ -61,40 +67,11 @@ abstract class Clients implements ClientsInterface
     }
 
     /**
-     * 设置配置
-     * @param Config $config
-     * @return Clients
-     */
-    final public function setConfig(Config $config): static
-    {
-        $this->config = $config;
-        return $this;
-    }
-
-    /**
      * 获得当前命名空间
      * @return string
      */
     final public static function getNamespace(): string
     {
         return __NAMESPACE__;
-    }
-
-    /**
-     * 获取当前文件路径
-     * @return string
-     */
-    final public static function getFilepath(): string
-    {
-        return __FILE__;
-    }
-
-    /**
-     * 获取当前目录名
-     * @return string
-     */
-    final public static function getDirname(): string
-    {
-        return __DIR__;
     }
 }
